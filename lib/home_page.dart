@@ -51,15 +51,23 @@ class HomePage extends StatelessWidget {
                 leading: Icon(
                   Icons.note_outlined,
                   color: Theme.of(context).primaryColor,
+                  size: 30,
                 ),
                 title: Text('Quick Notes'),
                 trailing: SizedBox(
                   width: 40,
                   child: Row(
                     children: [
-                      Text('1'),
+                      Text(
+                        '1',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
                       SizedBox(width: 8),
-                      Icon(Icons.arrow_forward_ios),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15,
+                        color: Colors.grey,
+                      ),
                     ],
                   ),
                 ),
@@ -76,15 +84,23 @@ class HomePage extends StatelessWidget {
                 leading: Icon(
                   Icons.folder_outlined,
                   color: Theme.of(context).primaryColor,
+                  size: 30,
                 ),
                 title: Text('Notes'),
                 trailing: SizedBox(
                   width: 40,
                   child: Row(
                     children: [
-                      Text('1'),
+                      Text(
+                        '1',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
                       SizedBox(width: 8),
-                      Icon(Icons.arrow_forward_ios),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15,
+                        color: Colors.grey,
+                      ),
                     ],
                   ),
                 ),
@@ -94,13 +110,26 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromRGBO(249, 249, 249, 1),
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.create_new_folder_outlined),
+            tooltip: 'Add folder',
+            icon: Icon(
+              Icons.create_new_folder_outlined,
+              color: Theme.of(context).primaryColor,
+              size: 30,
+            ),
             label: '',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.folder), label: ''),
+          BottomNavigationBarItem(
+            tooltip: 'Add notes',
+            icon: Icon(
+              Icons.note_add_outlined,
+              color: Theme.of(context).primaryColor,
+              size: 30,
+            ),
+            label: '',
+          ),
         ],
         currentIndex: 0,
         onTap: (index) {},

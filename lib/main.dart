@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
-        primaryColor: Colors.yellow,
+        primaryColor: Colors.amber,
         textTheme: TextTheme(
           titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          titleSmall: TextStyle(fontSize: 18, color: Colors.yellow),
+          titleSmall: TextStyle(fontSize: 18, color: Colors.amber),
         ),
       ),
       home: HomePage(),
