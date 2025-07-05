@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
                   fillColor: Colors.grey[200],
 
                   hintText: 'Search',
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: Icon(CupertinoIcons.search, color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     borderSide: BorderSide.none,
@@ -40,6 +41,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 18),
+
             GestureDetector(
               onTap: () {},
               child: ListTile(
@@ -49,40 +51,7 @@ class HomePage extends StatelessWidget {
                 tileColor: Colors.white,
 
                 leading: Icon(
-                  Icons.note_outlined,
-                  color: Theme.of(context).primaryColor,
-                  size: 30,
-                ),
-                title: Text('Quick Notes'),
-                trailing: SizedBox(
-                  width: 40,
-                  child: Row(
-                    children: [
-                      Text(
-                        '1',
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
-                      ),
-                      SizedBox(width: 8),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 15,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: ListTile(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                tileColor: Colors.white,
-
-                leading: Icon(
-                  Icons.folder_outlined,
+                  CupertinoIcons.folder,
                   color: Theme.of(context).primaryColor,
                   size: 30,
                 ),
@@ -115,7 +84,7 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             tooltip: 'Add folder',
             icon: Icon(
-              Icons.create_new_folder_outlined,
+              CupertinoIcons.folder_badge_plus,
               color: Theme.of(context).primaryColor,
               size: 30,
             ),
@@ -124,7 +93,7 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             tooltip: 'Add notes',
             icon: Icon(
-              Icons.note_add_outlined,
+              CupertinoIcons.square_pencil,
               color: Theme.of(context).primaryColor,
               size: 30,
             ),
