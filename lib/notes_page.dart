@@ -12,13 +12,17 @@ class NotesPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(CupertinoIcons.ellipsis_circle, color: Colors.amber),
+            icon: Icon(
+              CupertinoIcons.ellipsis_circle,
+              size: 30,
+              color: Colors.amber,
+            ),
           ),
         ],
         backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,6 +46,28 @@ class NotesPage extends StatelessWidget {
             ),
             SizedBox(height: 18),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SizedBox(
+          height: 50,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Text('0 Notes', style: TextStyle(fontSize: 16)),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Icon(
+                  CupertinoIcons.square_pencil,
+                  color: Colors.amber,
+                  size: 30,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
