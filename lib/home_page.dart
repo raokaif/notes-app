@@ -3,11 +3,82 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  void _showAddFolderSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: const Color.fromRGBO(251, 251, 253, 1),
+      context: context,
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return FractionallySizedBox(
+          heightFactor: 0.9,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Cancel',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'New Folder',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Done',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
+      backgroundColor: const Color.fromRGBO(251, 251, 253, 1),
       appBar: AppBar(
         actions: [
           TextButton(
@@ -15,7 +86,7 @@ class HomePage extends StatelessWidget {
             child: Text('Edit', style: Theme.of(context).textTheme.titleSmall),
           ),
         ],
-        backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
+        backgroundColor: const Color.fromRGBO(251, 251, 253, 1),
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -79,7 +150,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(249, 249, 249, 1),
+        backgroundColor: const Color.fromRGBO(251, 251, 253, 1),
         items: [
           BottomNavigationBarItem(
             tooltip: 'Add folder',
@@ -101,7 +172,9 @@ class HomePage extends StatelessWidget {
           ),
         ],
         currentIndex: 0,
-        onTap: (index) {},
+        onTap: (index) {
+          _showAddFolderSheet(context);
+        },
       ),
     );
   }
