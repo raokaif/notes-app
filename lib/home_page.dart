@@ -1,9 +1,58 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<String> folderNames = ['k'];
+
+  String generateName() {
+    String baseName = 'New Folder';
+    String name = baseName;
+    if (!folderNames.contains(name)) return name;
+
+    int i = 1;
+    while (folderNames.contains('$name $i')) {
+      i++;
+    }
+
+    return name;
+  }
+
+  void g(String name) {
+    setState(() {
+      folderNames.add(name);
+    });
+  }
+
+  ListTile tiles(String name) {
+    return ListTile(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      tileColor: Colors.white,
+
+      leading: Icon(CupertinoIcons.folder, color: Colors.amber, size: 30),
+      title: Text(name),
+      trailing: SizedBox(
+        width: 40,
+        child: Row(
+          children: [
+            Text('1', style: TextStyle(fontSize: 16, color: Colors.grey)),
+            SizedBox(width: 8),
+            Icon(Icons.arrow_forward_ios, size: 15, color: Colors.grey),
+          ],
+        ),
+      ),
+    );
+  }
+
   void _showAddFolderSheet(BuildContext context) {
+    String name = generateName();
+    TextEditingController nameController = TextEditingController(text: name);
     showModalBottomSheet(
       backgroundColor: const Color.fromRGBO(251, 251, 253, 1),
       context: context,
@@ -44,6 +93,7 @@ class HomePage extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: TextButton(
                           onPressed: () {
+                            g(nameController.text);
                             Navigator.pop(context);
                           },
                           child: Text(
@@ -57,7 +107,15 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 TextField(
+                  controller: nameController,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        CupertinoIcons.clear_circled_solid,
+                        color: const Color.fromARGB(255, 209, 207, 207),
+                      ),
+                    ),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -113,37 +171,18 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 18),
 
-            GestureDetector(
-              onTap: () {},
-              child: ListTile(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                tileColor: Colors.white,
-
-                leading: Icon(
-                  CupertinoIcons.folder,
-                  color: Theme.of(context).primaryColor,
-                  size: 30,
-                ),
-                title: Text('Notes'),
-                trailing: SizedBox(
-                  width: 40,
-                  child: Row(
-                    children: [
-                      Text(
-                        '1',
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
-                      ),
-                      SizedBox(width: 8),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 15,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
-                ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: folderNames.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: tiles(folderNames[index]),
+                    ),
+                  );
+                },
               ),
             ),
           ],
