@@ -1,8 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AddNotePage extends StatelessWidget {
+class AddNotePage extends StatefulWidget {
   const AddNotePage({super.key});
+
+  @override
+  State<AddNotePage> createState() => _AddNotePageState();
+}
+
+class _AddNotePageState extends State<AddNotePage> {
+  TextEditingController notesController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,7 @@ class AddNotePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: TextField(
           cursorHeight: 50,
-          cursorColor: Colors.black,
+          cursorColor: Colors.amber,
           expands: true,
           maxLines: null,
           minLines: null,

@@ -14,10 +14,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         primaryColor: Colors.amber,
+        iconTheme: IconThemeData(color: Colors.amber, size: 30),
         textTheme: TextTheme(
           titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          titleMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           titleSmall: TextStyle(fontSize: 18, color: Colors.amber),
         ),
       ),

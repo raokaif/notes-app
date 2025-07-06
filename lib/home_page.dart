@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:notes_app/add_note_page.dart';
+import 'package:notes_app/notes_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> folderNames = ['k'];
+  List<String> folderNames = ['Notes'];
 
   String generateName() {
     String baseName = 'New Folder';
@@ -21,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       i++;
     }
 
-    return name;
+    return '$name $i';
   }
 
   void g(String name) {
@@ -133,6 +135,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +182,16 @@ class _HomePageState extends State<HomePage> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return NotesPage();
+                            },
+                          ),
+                        );
+                      },
                       child: tiles(folderNames[index]),
                     ),
                   );
@@ -210,9 +223,24 @@ class _HomePageState extends State<HomePage> {
             label: '',
           ),
         ],
-        currentIndex: 0,
+        currentIndex: _selectedIndex,
         onTap: (index) {
-          _showAddFolderSheet(context);
+          setState(() {
+            _selectedIndex = index;
+          });
+
+          if (index == 0) {
+            _showAddFolderSheet(context);
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return AddNotePage();
+                },
+              ),
+            );
+          }
         },
       ),
     );

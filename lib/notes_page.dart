@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:notes_app/add_note_page.dart';
 
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
@@ -60,10 +61,22 @@ class NotesPage extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: Icon(
-                  CupertinoIcons.square_pencil,
-                  color: Colors.amber,
-                  size: 30,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return AddNotePage();
+                        },
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    CupertinoIcons.square_pencil,
+                    color: Colors.amber,
+                    size: 30,
+                  ),
                 ),
               ),
             ],
