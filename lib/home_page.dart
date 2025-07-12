@@ -32,26 +32,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  ListTile tiles(String name) {
-    return ListTile(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      tileColor: Colors.white,
-
-      leading: Icon(CupertinoIcons.folder, color: Colors.amber, size: 30),
-      title: Text(name),
-      trailing: SizedBox(
-        width: 40,
-        child: Row(
-          children: [
-            Text('1', style: TextStyle(fontSize: 16, color: Colors.grey)),
-            SizedBox(width: 8),
-            Icon(Icons.arrow_forward_ios, size: 15, color: Colors.grey),
-          ],
-        ),
-      ),
-    );
-  }
-
   void _showAddFolderSheet(BuildContext context) {
     String name = generateName();
     TextEditingController nameController = TextEditingController(text: name);
@@ -192,7 +172,39 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       },
-                      child: tiles(folderNames[index]),
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        tileColor: Colors.white,
+
+                        leading: Icon(
+                          CupertinoIcons.folder,
+                          color: Colors.amber,
+                          size: 30,
+                        ),
+                        title: Text(folderNames[index]),
+                        trailing: SizedBox(
+                          width: 40,
+                          child: Row(
+                            children: [
+                              Text(
+                                '1',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 15,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
