@@ -1,0 +1,13 @@
+# Ignore native platform code in language statistics
+/android/* linguist-vendored
+/ios/* linguist-vendored
+/macos/* linguist-vendored
+/web/* linguist-vendored
+/linux/* linguist-vendored
+/windows/* linguist-vendored
+
+# Ignore auto-generated build output
+/build/* linguist-generated
+
+# Force Dart files to be counted as Dart
+*.dart linguist-language=Dart
